@@ -1,0 +1,10 @@
+<launch>
+    <param name="3abdoh_description" command="$(find xacro)/xacro --inorder '$(find 3abdoh_description)/urdf/3abdoh.xacro'"/>
+
+
+    <node name= "mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" 
+          args="-urdf -param 3abdoh_description -model 3abdoh" />
+
+
+</launch>
+   

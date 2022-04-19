@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+<robot name="greeting" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find greeting_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find greeting_description)/urdf/greeting.trans" />
+<xacro:include filename="$(find greeting_description)/urdf/greeting.gazebo" />
+<!-- <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" /> -->
+<link name="base_link">
+  <inertial>
+    <origin xyz="3.291987897011012e-05 -0.038830153540959485 0.044361029708319816" rpy="0 0 0"/>
+    <mass value="10.493387204444465"/>
+    <inertia ixx="0.185151" iyy="0.174145" izz="0.301683" ixy="7.6e-05" iyz="0.001722" ixz="-3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="0.024999999999999967 3.122502256758253e-17 3.8163916471489756e-17" rpy="0 0 0"/>
+    <mass value="2.19217390124383"/>
+    <inertia ixx="0.016448" iyy="0.008681" izz="0.008681" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.2675 -0.02673 -0.0185" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.2675 -0.02673 -0.0185" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-0.024999999999999967 3.122502256758253e-17 3.8163916471489756e-17" rpy="0 0 0"/>
+    <mass value="2.19217390124383"/>
+    <inertia ixx="0.016448" iyy="0.008681" izz="0.008681" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.2675 -0.02673 -0.0185" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.2675 -0.02673 -0.0185" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="loads_1">
+  <inertial>
+    <origin xyz="-3.552713678800501e-17 -5.551115123125783e-17 0.05" rpy="0 0 0"/>
+    <mass value="51.6"/>
+    <inertia ixx="0.215" iyy="0.43" izz="0.559" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.09077 -0.067" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/loads_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.09077 -0.067" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/loads_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="0.0 3.8497681442012377e-07 0.010000000000000064" rpy="0 0 0"/>
+    <mass value="0.7891680745817558"/>
+    <inertia ixx="0.000342" iyy="0.000342" izz="0.000631" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.021586 -0.387" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.021586 -0.387" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://greeting_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin xyz="0.2675 0.02673 0.0185" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin xyz="-0.2675 0.02673 0.0185" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rigid3_load" type="fixed">
+  <origin xyz="0.0 -0.09077 0.067" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="loads_1"/>
+</joint>
+
+<joint name="Rigid4_lidar" type="fixed">
+  <origin xyz="0.0 -0.021586 0.387" rpy="0 0 1.57"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>  
+
+  <!-- <xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" organize_cloud="false" hz="10" samples="440" gpu="true">
+    <origin xyz="0.0 -0.021586 0.387" rpy="0 0 1.57"/>
+  </xacro:VLP-16> -->
+
+</robot>
